@@ -82,6 +82,9 @@ No special configuration needed on the receiving end — standard NDI source dis
 | 4 simultaneous instances capturing different windows | ✅ Stable |
 | Receiving in OBS (obs-ndi / DistroAV) | ✅ |
 | Receiving in mimoLive | ✅ |
+| Receiving in NDI Router | ✅ |
+| Receiving in Tractus Multiview | ✅ |
+| MacBook (WiFi) → remote Mac OBS over LAN | ✅ Works (tested with small-scale windows) |
 | Permission persists across app restarts | ✅ |
 | Permission persists across full reboot | ✅ |
 | macOS 15 Sequoia | ⚠️ Untested — same architecture, likely works |
@@ -95,6 +98,9 @@ No special configuration needed on the receiving end — standard NDI source dis
 In the **Cmd+Tab switcher**, each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`). In the **menu bar**, all instances display as "NDI Scan Converter" when running in the background — the active one shows its number. This is cosmetic and does not affect NDI functionality or source naming on the network.
 
 ## Known limitations
+
+**WiFi works but bandwidth matters**
+NDI is designed for gigabit LAN, but WiFi works fine for small or lower-motion content. 4 simultaneous streams over WiFi tested successfully with small Chrome windows. High-resolution or high-motion content will demand more bandwidth — use wired if you run into drops.
 
 **Occluded windows go black**
 If a captured window is completely covered by other windows, the stream freezes or goes black. This is a macOS window capture limitation — the OS does not composite hidden window contents. Workaround: keep captured windows on a separate Space or use a virtual display.
