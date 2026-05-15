@@ -79,7 +79,7 @@ Tested on **MacBook Pro M1 / macOS 14.8.4 Sonoma**:
 - MacBook on **WiFi** → remote Mac running OBS over LAN — works (tested with small-scale Chrome windows; bandwidth scales with window size/content) ✅
 - Screen Recording permission persists across **full reboot** ✅
 
-**App switcher and menu bar:** Each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`) in the Cmd+Tab app switcher. In the menu bar, they all show as "NDI Scan Converter" when in the background — once you switch to one, its number appears. Minor cosmetic thing, does not affect NDI functionality.
+**App switcher and menu bar:** Each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`) in both the Cmd+Tab app switcher and the menu bar. The setup script sets `CFBundleName` per copy, so macOS identifies each one correctly throughout the UI.
 
 ---
 

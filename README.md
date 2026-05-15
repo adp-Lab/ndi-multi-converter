@@ -95,7 +95,7 @@ No special configuration needed on the receiving end — standard NDI source dis
 
 ## App naming
 
-In the **Cmd+Tab switcher**, each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`). In the **menu bar**, all instances display as "NDI Scan Converter" when running in the background — the active one shows its number. This is cosmetic and does not affect NDI functionality or source naming on the network.
+Each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`) in the **Cmd+Tab switcher** and the **menu bar**. The setup script sets `CFBundleName` per copy so macOS identifies each one correctly throughout the UI.
 
 ## Known limitations
 
