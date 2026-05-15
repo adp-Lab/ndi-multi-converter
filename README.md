@@ -83,11 +83,16 @@ No special configuration needed on the receiving end — standard NDI source dis
 | Receiving in OBS (obs-ndi / DistroAV) | ✅ |
 | Receiving in mimoLive | ✅ |
 | Permission persists across app restarts | ✅ |
+| Permission persists across full reboot | ✅ |
 | macOS 15 Sequoia | ⚠️ Untested — same architecture, likely works |
 | macOS 13 Ventura or earlier | ⚠️ Untested |
 | Intel Mac | ⚠️ Untested (universal binary, may work) |
 
 ---
+
+## App naming
+
+In the **Cmd+Tab switcher**, each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`). In the **menu bar**, all instances display as "NDI Scan Converter" when running in the background — the active one shows its number. This is cosmetic and does not affect NDI functionality or source naming on the network.
 
 ## Known limitations
 

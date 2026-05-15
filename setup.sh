@@ -161,11 +161,13 @@ open(binary, 'wb').write(data)
 print(f"  Binary edit: Scan Converter → ${ndi_name}")
 PYEOF
 
-    # Update bundle identifier
+    # Update bundle identifier and display name
     /usr/bin/sed -i '' \
         "s/com.newtek.Application-Mac-NDI-ScanConverter/$bundle_id/g" \
         "$dest/Contents/Info.plist"
+    /usr/libexec/PlistBuddy -c "Set CFBundleName '${ndi_name}'" "$dest/Contents/Info.plist"
     echo "  Bundle ID:   $bundle_id"
+    echo "  App name:    ${ndi_name}"
 
     # Fix framework layout for clean codesign
     fix_framework_symlinks "$dest"

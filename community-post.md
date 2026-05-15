@@ -74,7 +74,9 @@ Tested on **MacBook Pro M1 / macOS 14.8.4 Sonoma**:
 - Each capturing a different window (tested with 4 YouTube videos in Chrome) ✅
 - All 4 appearing as distinct NDI sources in OBS (DistroAV plugin) ✅
 - All 4 appearing as distinct NDI sources in mimoLive ✅
-- Screen Recording permission persists across restarts ✅
+- Screen Recording permission persists across **full reboot** ✅
+
+**App switcher and menu bar:** Each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`) in the Cmd+Tab app switcher. In the menu bar, they all show as "NDI Scan Converter" when in the background — once you switch to one, its number appears. Minor cosmetic thing, does not affect NDI functionality.
 
 ---
 
