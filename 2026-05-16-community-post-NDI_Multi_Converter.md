@@ -78,6 +78,7 @@ Tested on **MacBook Pro M1 / macOS 14.8.4 Sonoma**:
 - All 4 sources visible in [Tractus Multiview](https://www.tractusevents.com/blog/multiviewer-for-ndi/) ✅
 - MacBook on **WiFi** → remote Mac running OBS over LAN — works (tested with small-scale Chrome windows; bandwidth scales with window size/content) ✅
 - Screen Recording permission persists across **full reboot** ✅
+- **3 instances used in live production across two consecutive show days** ✅
 
 **App switcher and menu bar:** Each instance shows its correct name (`NDI Scan Convert 2`, `3`, `4`) in both the Cmd+Tab app switcher and the menu bar. The setup script sets `CFBundleName` per copy, so macOS identifies each one correctly throughout the UI.
 

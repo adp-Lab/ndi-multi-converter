@@ -87,6 +87,7 @@ No special configuration needed on the receiving end — standard NDI source dis
 | MacBook (WiFi) → remote Mac OBS over LAN | ✅ Works (tested with small-scale windows) |
 | Permission persists across app restarts | ✅ |
 | Permission persists across full reboot | ✅ |
+| 3 instances in live production use (two consecutive show days) | ✅ |
 | macOS 15 Sequoia | ⚠️ Untested — same architecture, likely works |
 | macOS 13 Ventura or earlier | ⚠️ Untested |
 | Intel Mac | ⚠️ Untested (universal binary, may work) |
