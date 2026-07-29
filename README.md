@@ -88,7 +88,7 @@ No special configuration needed on the receiving end — standard NDI source dis
 | Permission persists across app restarts | ✅ |
 | Permission persists across full reboot | ✅ |
 | 3 instances in live production use (two consecutive show days) | ✅ |
-| macOS 15 Sequoia | ⚠️ Untested — same architecture, likely works |
+| Mac Mini M-series / macOS 15.7.5 Sequoia | ✅ Fully working — 4 simultaneous instances confirmed in OBS |
 | macOS 13 Ventura or earlier | ⚠️ Untested |
 | Intel Mac | ⚠️ Untested (universal binary, may work) |
 
@@ -111,6 +111,9 @@ Each of the three new apps must be granted Screen Recording permission once on f
 
 **Self-signed certificate is machine-local**
 The signing certificate created by setup.sh lives in your Mac's Keychain. It is not transferable. If you set this up on another machine, run setup.sh there too — it will create a fresh certificate automatically.
+
+**setup.sh must run in a GUI session — not over plain SSH**
+The certificate-creation step (`security import` into the login keychain) requires an Aqua (GUI-bound) session. A bare `ssh host command` session runs as a `Background` launchd session and fails with `User interaction is not allowed`, even though the same user is logged in at the console. Run setup.sh from Screen Sharing or physically at the machine.
 
 **No Video Monitor instances**
 NDI Video Monitor uses CVDisplayLink (high-priority display sync) which conflicts with multiple Scan Converter instances and can cause a WindowServer crash. Do not run more than one Video Monitor instance at the same time as multiple Scan Converters. This tool only multiplies Scan Converter (the sending side).
