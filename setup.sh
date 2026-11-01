@@ -104,7 +104,8 @@ create_cert() {
         echo -e "Certificate '${CERT_NAME}': ${GREEN}created${NC}"
     else
         echo -e "${RED}Certificate creation failed.${NC}"
-        echo "Try the manual steps in the README (Keychain Access GUI method)."
+        echo "Run setup.sh in a Terminal on the Mac's own desktop session (not over SSH)"
+        echo "and approve the password prompt for the certificate."
         exit 1
     fi
 }
@@ -141,7 +142,7 @@ create_copy() {
 
     # Binary edit: replace NDI source name at both positions in the universal binary.
     # "Scan Converter" is 14 bytes; replacement must be exactly 14 bytes.
-    python3 - <<PYEOF
+    python3 - <<PYEOF || { rm -rf "$dest"; exit 1; }
 import sys
 
 binary  = "$dest/Contents/MacOS/NDI Scan Converter"
@@ -154,6 +155,8 @@ for pos in positions:
     found = bytes(data[pos:pos+14])
     if found != target:
         print(f"ERROR at position {pos}: expected {target!r}, got {found!r}")
+        print("This NDI Scan Converter build differs from the tested one (6.3.1 / 6.3.2).")
+        print("Nothing was patched and the original app is untouched.")
         sys.exit(1)
     data[pos:pos+14] = replace
 
@@ -178,7 +181,7 @@ PYEOF
         --identifier "$bundle_id" \
         --options runtime \
         --entitlements "$ENTITLEMENTS" \
-        "$dest" 2>/dev/null
+        "$dest"
 
     # Verify
     if codesign --verify --strict "$dest" 2>/dev/null; then

@@ -37,7 +37,7 @@ The script cannot use macOS's built-in LibreSSL — it is not compatible with th
 
 ```bash
 # 1. Clone this repo
-git clone git@github.com:adp-Lab/ndi-multi-converter.git
+git clone https://github.com/adp-Lab/ndi-multi-converter.git
 cd ndi-multi-converter
 
 # 2. Make the script executable
@@ -53,7 +53,9 @@ The script will:
 - Sign each with that certificate
 - Reset Screen Recording permissions so macOS prompts cleanly on first launch
 
-**After setup:** Open each app once from `/Applications` and grant Screen Recording when asked. macOS will not ask again after that.
+macOS asks for your password or Touch ID while the certificate is being trusted. Run the script in a Terminal on the Mac itself, not over SSH.
+
+**After setup:** Open each app once from `/Applications` and grant Screen Recording when asked. If macOS also asks for network access, allow it, because NDI needs it to appear on the network.
 
 ---
 
@@ -89,6 +91,8 @@ No special configuration needed on the receiving end — standard NDI source dis
 | Permission persists across full reboot | ✅ |
 | 3 instances in live production use (two consecutive show days) | ✅ |
 | Mac Mini M-series / macOS 15.7.5 Sequoia | ✅ Fully working — 4 simultaneous instances confirmed in OBS |
+| NDI Scan Converter 6.3.1 and 6.3.2 | ✅ Script aborts safely if a later build changes the binary layout |
+| macOS 26 or later | ⚠️ Untested |
 | macOS 13 Ventura or earlier | ⚠️ Untested |
 | Intel Mac | ⚠️ Untested (universal binary, may work) |
 
@@ -140,6 +144,20 @@ The original app is never modified.
 ## Re-running setup
 
 Running `./setup.sh` again is safe — it recreates the copies from the original and re-signs them. Existing copies in `/Applications` are replaced. The certificate is reused if it already exists.
+
+Updating NDI Tools does not update the copies. Run `./setup.sh` again afterwards to rebuild them from the new version.
+
+---
+
+## What it changes on your Mac, and how to remove it
+
+The script adds three apps to `/Applications` and a self-signed code-signing certificate, marked as trusted for code signing, to your login keychain. The certificate's private key stays on your Mac.
+
+To remove everything:
+
+1. Delete `NDI Scan Convert 2.app`, `3` and `4` from `/Applications`.
+2. In Keychain Access, delete the `NDI Local Signing` certificate and its private key from the login keychain.
+3. Remove the three apps from System Settings → Privacy & Security → Screen Recording, if they are still listed.
 
 ---
 

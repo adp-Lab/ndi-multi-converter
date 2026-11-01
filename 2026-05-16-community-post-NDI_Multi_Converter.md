@@ -92,20 +92,18 @@ Tested on **MacBook Pro M1 / macOS 14.8.4 Sonoma**:
 
 **Self-signed cert is per-machine.** The signing certificate lives in your local Keychain and can't be shared. Run the setup script on each machine.
 
-**macOS 15 Sequoia: untested.** Same approach should work, but not verified yet. Will update the repo when confirmed.
-
 ---
 
 ## Requirements
 
-- macOS 14 Sonoma (macOS 15 likely works)
+- macOS 14 Sonoma or macOS 15 Sequoia
 - [NDI Tools](https://ndi.video/tools/) installed (free)
 - [Homebrew](https://brew.sh) + `brew install openssl`
 
 Then just:
 
 ```bash
-git clone git@github.com:adp-Lab/ndi-multi-converter.git
+git clone https://github.com/adp-Lab/ndi-multi-converter.git
 cd ndi-multi-converter
 chmod +x setup.sh
 ./setup.sh
@@ -113,4 +111,4 @@ chmod +x setup.sh
 
 ---
 
-Happy to hear if this works on other macOS versions or hardware. Especially curious about Sequoia.
+Happy to hear if this works on other macOS versions or hardware.
